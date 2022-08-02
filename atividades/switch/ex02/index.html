@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exemplo 2</title>
+    </head>
+    <body>
+        <h1>Exemplo 2</h1>
+
+        <div>
+            <h2 id="meupodio"></h2>
+        </div>
+
+        <script>
+        const meuPodio = document.getElementById("meupodio");
+        const atualPos = parseInt(prompt("Informe seu podio: "));
+
+        switch (atualPos) { 
+            case 1:
+            case 2:
+            case 3:
+                meuPodio.innerHTML = `
+                <span style='color: #2CF3B8'>VOCÊ ESTÁ NO PODIO!</span>
+                <pre> 
+                       1 
+                     @---@ 
+                  2  | @ | 
+                @---@| | | 
+                | @ || | |  3
+                | | || | |@---@ 
+                | | || | || @ | 
+                </pre>
+                `
+                break;
+
+            default:
+                meuPodio.innerHTML = "<span style='color: red'>Você não está no podio... :(</span>";
+                break;
+        }
+        </script>
+    </body>
+</html>

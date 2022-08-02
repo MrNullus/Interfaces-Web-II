@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Exemplo 3</title>
+    </head>
+    <body>
+        <h1>Exemplo 3</h1>
+
+        <form method="GET">
+            <input type="number" name="posInput" id="posInput" placeholder="Qual sua posição?" />
+            <button type="button" onclick="podio()">Verificar podio</button>
+        </form>
+
+        <div>
+            <h2 id="meupodio"></h2>
+        </div>
+
+        <script>
+            function podio() {
+				const posInput = parseInt(document.getElementById("posInput").value);
+				const meuPodio = document.getElementById("meupodio");
+
+                switch (posInput) {	
+                    case 1:
+                    case 2:
+                    case 3:
+                        if (posInput == 1){
+							meuPodio.innerHTML = "<span style='color: gold'>Campeão &#x1F947;!!</span>";
+						} else if (posInput == 2){
+							meuPodio.innerHTML = "<span style='color: gray'>Segundo Lugar &#x1F948;</span>";
+						} else {
+							meuPodio.innerHTML = "<span style='color: #F48546'>Terceiro Lugar &#x1F949;</span>";
+						}
+						break;
+
+                    default:
+                        meuPodio.innerHTML = "<span style='color: red'>Você não está no podio... :(</span>";
+                        break;
+                }
+            }
+        </script>
+    </body>
+</html>

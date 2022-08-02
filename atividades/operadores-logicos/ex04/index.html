@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=, initial-scale=1.0">
+        <title>ATIVIDADE DE OPERADORES LÓGICOS</title>
+    </head>
+    <body>
+        <h1>Atividade 4</h1>
+
+        <form>
+            <label for="velocidade">
+                Selecione sua prioridade:
+            </label>
+            <br><br>
+            
+            <select name="lista-prioridades" id="lista-prioridades">
+                <option value="nenhuma">Nenhuma</option>
+                <option value="deficiente">Deficiente</option>
+                <option value="idosa">Idosa</option>
+                <option value="gestante">Gestante</option>
+            </select>
+    
+            <br><br>
+            <button type="button" onclick="definirPrioridade()">
+                Definir prioridade
+            </button>
+        </form>
+
+        <div id="msg">
+        </div>
+    </body>
+
+    <script>
+        const msg = document.getElementById("msg");
+
+        function definirPrioridade() {
+            const prioridade = document.getElementById("lista-prioridades").value;
+
+            if (
+                prioridade == "deficiente" ||
+                prioridade == "idosa" ||
+                prioridade == "gestante"
+            ) {
+                msg.innerHTML = `
+                <h3 style='color: green'>Tem direito a lista prioritárias</span></h3>
+
+                <h3>Prioridade: <span style='color: rgb(19, 0, 128)'>${prioridade}</span></h3>
+                `;
+
+            } else {
+                msg.innerHTML = `
+                <h3 style='color: red'>Não tem direito a lista prioritária</span></h3>
+                `;
+            }
+            
+        }
+
+    </script>
+
+</html>

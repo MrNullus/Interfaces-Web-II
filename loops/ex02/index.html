@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicios Laços de Repetição</title>
+    <style>
+        #msg { margin: auto; padding: 0 12px; }
+        .multiplo {
+            display: inline-block;
+            max-width: 150px;
+            margin: 5px;
+            height: auto;
+            background: #262626;
+            color: #fff;
+            padding: 12px;
+            text-align: center;
+            border-radius: 25px;
+            cursor: pointer;
+        }
+        .multiplo:hover {
+            border: 4px solid #262626;
+            color: #262626;
+            background: transparent;
+            padding: 6px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+        <h1>Exercicios Laços de Repetição</h1>
+        <h4>
+            – Faça um programa que conte de 1 a 100 e a cada múltiplo de 10 emita uma mensagem: “Múltiplo de 10”. 
+        </h4>
+    </center>
+
+    <center>
+        <div id="msg">
+        </div>
+    </center>
+
+    <script type="text/javascript">
+        function exibirMensagem(msg) {
+            const msgBox = document.getElementById("msg");
+            msgBox.innerHTML += msg;
+        }
+
+        for (let valAtual = 1; valAtual <= 100; valAtual++) {
+            if ((valAtual % 10) == 0) {
+                exibirMensagem(`
+                    <p class='multiplo'>Múltiplo de 10</p>
+                `);
+            }
+        }
+    </script>
+</body>
+</html>

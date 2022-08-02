@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=, initial-scale=1.0">
+        <title>ATIVIDADE DE OPERADORES LÓGICOS</title>
+    </head>
+    <body>
+        <h1>Atividade 3</h1>
+
+        <form>
+            <div>
+                <label for="idade">Informe sua idade:</label>
+                <input type="number" name="idade" id="idade" />
+            </div>
+            <br>
+
+            <div>
+                <label for="salario">Informe seu salario:</label>
+                <input type="text" name="salario" id="salario" />
+            </div>
+            <br>
+
+            <button type="button" onclick="consultar()">
+                Consultar
+            </button>
+        </form>
+        <br>
+        
+        <div id="msg">
+        </div>
+
+    </body>
+
+    <script>
+        
+        function consultar() {
+            const msg = document.getElementById("msg");
+            const idade = document.getElementById("idade").value;
+            const salario = parseFloat(document.getElementById("salario").value);
+
+            if (
+                idade >= 18 &&
+                salario > 2000.00
+            ) {
+                msg.innerHTML = "<h3 style='color: green'>Você pode participar!</h3>";
+            } else {
+                msg.innerHTML = "<h3 style='color: red'>Você não pode participar...</h3>";
+            }
+
+        }
+
+    </script>
+
+</html>

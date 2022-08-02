@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DESAFIO</title>
+    <style>
+        #msg { margin: auto; padding: 0 12px; }
+        .result {
+            display: inline-block;
+            min-width: 200px; height: auto;
+            margin: 5px;
+            padding: 14px;
+            border-radius: 15px;
+            color: #fff;
+            text-align: center;
+        }
+        .success { background-color: #44b15c; }
+        .warning-1 { background-color: #E2E20B; }
+        .warning-2 { background-color: #d12245; }
+        .default { background: #262626; }
+    </style>
+</head>
+<body>
+    <center>
+        <h1>DESAFIO</h1>
+        <h4>
+            Jogo de Adivinhação
+        </h4>
+        <br>
+    
+        <div id="msg">
+        </div>
+
+        <br><br>
+        <form>
+            <div class="input-field">
+                <label for="number">Que número você irá chutar?</label>
+                <input type="text" name="number" id="number" />
+            </div>
+
+            <br><br>
+            <button type="button" onclick="verificarChute()">Adivinhar!</button>
+            <button type="button" onclick="restart()">Restart</button>
+        </form>
+    </center>
+
+    <script type="text/javascript">
+        exibirMensagem("<h3 class='result default'>Jogo Iniciado!</h3>");
+
+        let RANDOM = Math.floor(Math.random() * 10);
+
+
+        function restart() {
+            RANDOM = Math.floor(Math.random() * 10 + 3);
+            message = "<h3 class='result default'>O jogo foi restartado, tente adivinhar de novo!</h3>";
+            document.getElementById("number").value = "";
+            
+            exibirMensagem(message);
+        }
+
+        function verificarChute() {
+            // pegar valor
+            const numberInput = parseInt(document.getElementById("number").value);            
+            let message = "";
+
+            // verificar o valor de entrada
+            if (RANDOM == numberInput) {
+                message = "<h3 class='result success'>Parabéns, você acertou!!!</h3>";
+            } else if (RANDOM > numberInput) {
+                message = "<h3 class='result warning-1'>O número correto é maior!</h3>";
+            } else if (RANDOM < numberInput) {   
+                message = "<h3 class='result warning-2'>O número correto é menor!</h3>";
+            } else if (isNaN(numberInput)) {
+                message = "<h3 class='result default'>Informe um número inteiro</h3>";
+            } else {
+                message = "<h3 class='result warning-2'>Erro inesperado</h3>";
+            }
+
+            exibirMensagem(message);
+        }
+        
+        function exibirMensagem(msg) {
+            const msgBox = document.getElementById("msg");
+            msgBox.innerHTML = msg;
+        }
+    </script>
+</body>
+</html>

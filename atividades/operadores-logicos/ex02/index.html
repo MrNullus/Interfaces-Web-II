@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=, initial-scale=1.0">
+        <title>ATIVIDADE DE OPERADORES LÓGICOS</title>
+    </head>
+    <body>
+        <h1>Atividade 2</h1>
+
+        <form>
+            <label for="velocidade">
+                Qual a velocidade do veiculo?
+            </label>
+            <br><br>
+            <input type="number" name="velocidade" id="velocidade" />
+    
+            <br><br>
+            <button type="button" onclick="verficarVelocidade()">
+                Verificar
+            </button>
+        </form>
+
+        <h3 id="msg">
+            Status: <span style='color: orange'>Verificar</span>
+        </h3>
+    </body>
+
+    <script>
+        const msg = document.getElementById("msg");
+
+        function verficarVelocidade() {
+            const atualVelocidade = document.getElementById("velocidade").value;
+
+            if (
+                atualVelocidade > 80 || 
+                atualVelocidade < 40
+            ) {
+                msg.innerHTML = "Status: <span style='color: red'>MULTA</span>";
+            } else {
+                msg.innerHTML = "Status: <span style='color: green'>OK</span>";
+            }
+
+        }
+
+    </script>
+
+</html>
