@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Atividade - Gênio</title>
+
+		<style>
+			* { box-sizing: border-box; }
+			body { background: #101A33; letter-spacing: 1pt;}
+			img { width: 500px; float: right; border-bottom: 1px solid #5F95C9; clear: both; }
+			h1 { color: #cbd1f5;  text-align: center; }
+			p { color: #5A9ED9; font-size: 16px; }
+			form { margin-left: 12%; margin-top: 9%; max-width: 370px; height: 100px; }
+			.btn, input[type="number"] { width: 100%;  }
+			.btn { margin-top: 14px; height: 40%; font-size: 17px; cursor: pointer; border: 2px solid #5F95C9; border-radius: 3px; background: none; color: #ffff}
+			.quit { border: 2px solid #dd2525;background: none;}
+			input[type="number"] { padding: 0px; margin: 0px; height: 40%; font-size: 16px; padding: 12px 6px; }
+		</style>
+	</head>
+
+	<body>
+		<div>
+			<h1>Jogo do Gênio</h1>
+
+			<center>
+				<p id="msg-box">Então você quer jogar?</p>
+			</center>
+		</div>
+
+		<img src="./sprites/sprite_1.png" alt="Gênio" id="genio" width="492" height="360" />
+
+		<form>
+			<input type="number" name="number" id="number" disabled />
+
+			<button type="button" id="btn-start" class="btn" onclick="start()">
+				Quero jogar!
+			</button>
+
+			<button type="button" id="btn-loose" class="btn quit" onclick="quit()">
+				Desisto
+			</button>
+		</form>
+
+		<script>
+			// # valores iniciais #
+			const genioImg = document.getElementById("genio");
+			const numberInput = document.getElementById("number");
+			const msgBox = document.getElementById("msg-box");
+			// # criar numero aleatorio entre 1 e 10 #
+			let numberRandom = Math.floor(Math.random() * 10);
+			console.log(numberRandom);
+
+
+			// # funções principais #
+			function start() {
+				let number = parseInt(numberInput.value);
+				document.getElementById("btn-start").textContent = "Advinhar!";
+				numberInput.disabled = false;
+
+				setSprite(genioImg, "sprite_2");
+				setMessage(msgBox, "Vamos ver sua sorte então<br><br> <strong>Digite um número de 0 a 10</strong>");
+
+				// # verifica se o usuario realmente digitou um número #
+				if (!isNaN(number)) {
+					if (number == numberRandom) {
+						setSprite(genioImg, "sprite_4");
+						setMessage(msgBox,
+							"Parabéns, você ganhou!! É uma pessoa de sorte<br><br> <strong>Aperte F5 para jogar novamente</strong>"
+						);
+					} else {
+						setSprite(genioImg, "sprite_5");
+						setMessage(msgBox, "UHH você errou!!<br><br> <strong>Tente advinhar se for capaz</strong>");
+					}
+				}
+
+			}
+
+			function quit() {
+				setSprite(genioImg, "sprite_3");
+				setMessage(msgBox, "Já vai desistir? Vejo que não é tão bom quanto pensei!");
+
+				numberInput.value = "";
+				numberInput.disabled = true;
+			}
+
+
+			// # funções auxiliares #
+			function setSprite(element, sprite) {
+				element.src = `./sprites/${sprite}.png`;
+			}
+
+			function setMessage(msgBox, msg) {
+				msgBox.innerHTML = msg;
+			}
+		</script>
+	</body>
+
+</html>
