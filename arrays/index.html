@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>EXEMPLOS ARRAYS</title>
+  <meta charset="utf-8" />
+  <style>
+    * { box-sizing: border-box; }
+
+    .container-card {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .card {
+      width: 100%;
+      border: 2px solid #71e7ac;
+      padding: 2rem 0.65rem;
+    }
+    .card h3 {
+      padding-bottom: 0.34rem;
+    }
+  </style>
+</head>
+
+<body>
+  <div>
+    <h2>EXEMPLOS ARRAYS</h2>
+  </div>
+
+  <!--O PRIMEIRO ARRAY INSERIR LINHA A LINHA-->
+  <!--O SEGUNDO ARRAY INSERIR JÁ NA DECLARAÇÃO-->
+
+  <div class="container-card">
+    <div class="card">
+      <h3>Mostrando valores dos arrays criados</h3>
+
+      <button type="button" onclick="mostrarArrays()">
+        Clique aqui para ver os valores
+      </button>
+
+      <p id="conteudo1">A saída é exibida aqui</p>
+      <p id="conteudo1b">A saída é exibida aqui</p>
+
+    </div>
+
+    <div class="card">
+      <h3>Concatenando valores dos arrays criados (concat)</h3>
+
+      <button type="button" onclick="concatenarArrays()">
+        Clique concatenar os valores
+      </button>
+
+      <p id="conteudo2">A saída é exibida aqui</p>
+
+    </div>
+
+    <div class="card">
+      <h3>Procurando um elemento (indexOf)</h3>
+      <!--COM INPUT-->
+
+      <button type="button" onclick="procurar()">
+        Clique aqui procurar a cor azul
+      </button>
+
+      <p id="conteudo3">A saída é exibida aqui</p>
+
+    </div>
+
+    <div class="card">
+      <h3>Juntando em strings (join)</h3>
+
+      <button type="button" onclick="juntarEmString()">
+        Clique aqui juntar em string os valores
+      </button>
+
+      <p id="conteudo4">A saída é exibida aqui</p>
+
+    </div>
+
+    <div class="card">
+      <h3>Inserindo um valor no final do cores1 (push)</h3>
+      <!--COM INPUT-->
+
+      <button type="button" onclick="inserirCor()">
+        Clique aqui para ver a alteração
+      </button>
+
+      <p id="conteudo5">A saída é exibida aqui</p>
+
+    </div>
+
+    <div class="card">
+      <h3>Removendo o último valor do cores2 (pop)</h3>
+
+      <button type="button" onclick="removerCor()">
+        Clique aqui para ver a alteração
+      </button>
+
+      <p id="conteudo6">A saída é exibida aqui</p>
+
+    </div>
+
+    <div class="card">
+      <h3>Inserindo um valor no início do array cores1 (unshift)</h3>
+      <!--COM INPUT-->
+
+      <button type="button" onclick="inserirCorInicio()">
+        Clique aqui para ver os valores
+      </button>
+
+      <p id="conteudo7">A saída é exibida aqui</p>
+
+    </div>
+
+    <div class="card">
+      <h3>Removendo o primeiro valor do array cores1 (shift)</h3>
+
+      <button type="button" onclick="removePrimeiro()">
+        Clique aqui para ver os valores
+      </button>
+
+      <p id="conteudo8">A saída é exibida aqui</p>
+
+    </div>
+
+    <div class="card">
+      <h3>Invertendo a ordem do array cores2 (reverse)</h3>
+
+      <button type="button" onclick="inverterCores2()">
+        Clique aqui para ver os valores
+      </button>
+
+      <p id="conteudo9">A saída é exibida aqui</p>
+
+    </div>
+
+    <div class="card">
+      <h3>Ordenando em ordem crescente o array cores1(sort)</h3>
+
+      <button type="button" onclick="ordemCrescente()">
+        Clique aqui para ver os valores
+      </button>
+
+      <p id="conteudo10">A saída é exibida aqui</p>
+
+    </div>
+
+    <div class="card">
+      <h3>Convertendo em string (toString) o array cores1</h3>
+
+      <button type="button" onclick="paraString()">
+        Clique aqui para ver os valores
+      </button>
+
+      <p id="conteudo11">A saída é exibida aqui</p>
+
+    </div>
+
+    <div class="card">
+      <h3>Cortando os arrays em um ponto indicado (splice)</h3>
+      <!--COM INPUT-->
+
+      <button type="button" onclick="cortarArrays()">
+        Clique aqui para ver os valores
+      </button>
+
+      <p id="conteudo12a">A saída é exibida aqui</p>
+      <p id="conteudo12b">A saída é exibida aqui</p>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    /* 
+      | DECLARANDO E PREENCHENDO LINHA-LINHA
+      */
+    let cores1 = new Array();
+
+    cores1[0] = "vermelho";
+    cores1[1] = "preto";
+    cores1[2] = "azul";
+    cores1[3] = "amarelo";
+    cores1[4] = "rosa";
+
+    /* 
+    | DECLARANDO E PREENCHENDO DIRETO
+    */
+    let cores2 = ["marrom", "cinza", "roxo", "laranja", "branco"];
+
+    /* 
+    | FUNÇÕES
+    */
+    function mostrarArrays() {
+      /* dados iniciais */
+      let valores1 = "";
+      let valores2 = "";
+
+      /* pegando valores dos arrays */
+      // -> array 1
+      for (let i = 0; i <= 4; i++) {
+        valores1 += `${cores1[i]} <br>`;
+      }
+      // -> array 2
+      for (let i = 0; i <= 4; i++) {
+        valores2 += `${cores2[i]} <br>`;
+      }
+
+      /* exibindo resultado */
+      document.getElementById(
+        "conteudo1"
+      ).innerHTML = `<strong>Cores 1</strong> <br> ${valores1}`;
+      document.getElementById(
+        "conteudo1b"
+      ).innerHTML = `<strong>Cores 2</strong> <br> ${valores2}`;
+    }
+  </script>
+</body>
+
+</html>
