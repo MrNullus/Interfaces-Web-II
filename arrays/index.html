@@ -217,6 +217,113 @@
         "conteudo1b"
       ).innerHTML = `<strong>Cores 2</strong> <br> ${valores2}`;
     }
+    
+    let valores2="";
+            for(let i=0;i<=4;i++){
+                valores2=valores2+cores2[i]+"<br/>";
+            }
+
+ 
+
+            document.getElementById('conteudo1b')
+                .innerHTML = valores2+"<br/>";
+
+ 
+
+        }
+
+ 
+
+        function concatenarArrays(){
+            let juntar = cores1.concat(cores2); 
+            document.getElementById('conteudo2')
+                .innerHTML = juntar+"<br/>";
+        }
+
+ 
+
+        function procurar(){
+            let posicao = cores1.indexOf("azul");
+            document.getElementById('conteudo3')
+                .innerHTML = "A cor azul está na posição: "+ posicao + "<br/>";
+        }
+
+ 
+
+        function juntarEmString(){
+            let juntar = cores1.join();
+            document.getElementById('conteudo4')
+                .innerHTML = "O resultado da string é: "+ juntar + "<br/>";
+        }
+
+ 
+
+        function inserirCor(){
+            cores1.push("verde"); 
+            document.getElementById('conteudo5')
+                .innerHTML = "A lista de cores agora é: "+ cores1 + "<br/>";
+        }
+
+ 
+
+        function removerCor(){
+            cores2.pop("branco"); 
+            document.getElementById('conteudo6')
+                .innerHTML = "A lista de cores agora é: "+ cores2 + "<br/>";
+        }
+
+ 
+
+        function inserirCorInicio(){
+            cores1.unshift("branco"); 
+            document.getElementById('conteudo7')
+                .innerHTML = "A lista de cores agora é: "+ cores1 + "<br/>";
+        }
+
+ 
+
+        function removePrimeiro(){
+            cores1.shift(); 
+            document.getElementById('conteudo8')
+                .innerHTML = "A lista de cores agora é: "+ cores1 + "<br/>";
+        }
+
+ 
+
+        function inverterCores2(){
+            cores2.reverse(); 
+            document.getElementById('conteudo9')
+                .innerHTML = "A lista de cores agora é: "+ cores2 + "<br/>";
+        }
+
+ 
+
+        function ordemCrescente(){
+            cores1.sort(); 
+            document.getElementById('conteudo10')
+                .innerHTML = "A lista de cores agora é: "+ cores1 + "<br/>";
+        }
+
+ 
+
+        function paraString(){
+            cores1.toString(); 
+            document.getElementById('conteudo11')
+                .innerHTML = "A lista de cores agora é: "+ cores1 + "<br/>";
+        }
+
+ 
+
+        function cortarArrays(){
+            //Remove 4 elementos a partir do índice 2
+            cores1.splice(2,4); 
+            document.getElementById('conteudo12a')
+                .innerHTML = "A lista de cores agora é: "+ cores1 + "<br/>";
+            //Remove 1 elemento a partir do índice 2
+            cores2.splice(2,1); 
+            document.getElementById('conteudo12b')
+                .innerHTML = "A lista de cores agora é: "+ cores2 + "<br/>";
+        }
   </script>
 </body>
 
