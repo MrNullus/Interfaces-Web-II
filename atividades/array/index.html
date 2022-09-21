@@ -12,6 +12,7 @@
     * Dados Iniciais
     */
     let alunos = new Array();
+	let adicionouNovoAluno = false;
     let alunosAutomaticos = [
       ['João', 'ADM', '16'],
       ['Maria', 'INFO', '18'],
@@ -31,54 +32,79 @@
       let aluno = [ nome, curso, idade ];
 
       alunos.push(aluno);
+	  adicionouNovoAluno = true;
     }
 
     function exibirCadastros() {
-      const tableCadastros = document.getElementById('tableCadastros');
+	  if ( adicionouNovoAluno ) {	 
+		const tableCadastros = document.getElementById('tableCadastros');
+		
+		  for (let i = 0; i < alunos.length; i++) {
+			let tr = '';
+			let td = '';
 
-      for (let i = 0; i < alunos.length - 1; i++) {
-        let tr = '';
-        let td = '';
+			let nome = alunos[i][0];
+			let curso = alunos[i][1];
+			let idade = alunos[i][2];
 
-        let nome = alunos[i][0];
-        let curso = alunos[i][1];
-        let idade = alunos[i][2];
+			td += `
+			<!-- unico td -->
+			<td>
+			  ${nome}
+			</td>
+			<td>
+			  ${curso}
+			</td>
+			<td>
+			  ${idade}
+			</td>
+			<!-- /unico td -->
+			`;
 
-        td += `
-        <!-- unico td -->
-        <td>
-          ${nome}
-        </td>
-        <td>
-          ${curso}
-        </td>
-        <td>
-          ${idade}
-        </td>
-        <!-- /unico td -->
-        `;
-
-        tr = `
-        <tr>
-          ${td}
-        </tr>
-        `;
-
-        tableCadastros.innerHTML += tr;
-      }
+			tr = `
+			<tr>
+			  ${td}
+			</tr>
+			`;
+			
+			tableCadastros.innerHTML += tr;
+		  }
+	  }
+	  adicionouNovoAluno = false;
     }
 
     function cadastroAutomatico() {
-      for (let aluno = 0; aluno < alunosAutomaticos.length - 1; aluno++) {
+      for (let aluno = 0; aluno < alunosAutomaticos.length; aluno++) {
         alunos.push(alunosAutomaticos[aluno]);
       }
+	  adicionouNovoAluno = true;
     }
     
     function pesquisarAluno() {
+	  const lblMsgPesquisa = document.getElementById('lblMsgPesquisa');
       let nomePesquisado = document.getElementById('txtNomePesquisado').value;
-      for (let aluno = 0; aluno < alunos.length - 1; aluno++) {
+	  let alunoEncontrado = [];
+	  
+	   if (nomePesquisado == '') {
+		lblMsgPesquisa.innerText = "Insira um nome valido...";
+	   } 
+	  
+      for (let aluno = 0; aluno < alunos.length; aluno++) {
         console.log(alunos[aluno][0].indexOf(nomePesquisado));
+		let nomeAtual = alunos[aluno][0];
+		
+		if (nomeAtual == nomePesquisado) {
+			alunoEncontrado = alunos[aluno];
+		}
       }
+	  
+		if (alunoEncontrado.length <= -1) {
+		  lblMsgPesquisa.innerText = "Aluno (a) não encontrado... :(";
+		} else {
+		  lblMsgPesquisa.innerText = "Aluno (a) encontrado!";
+		  console.log(nomePesquisado);
+		}
+		
       
     }
   </script>
@@ -99,7 +125,7 @@
     <div>
       <button onclick="cadastrarAluno()">Cadastrar</button>
 
-      <button onclick="exibirCadastros()">Imprimir</button>
+      <button onclick="exibirCadastros()">Exibir</button>
 
       <button onclick="cadastroAutomatico()">Auto</button>
     </div>
@@ -107,7 +133,9 @@
 
     <input type="text" id="txtNomePesquisado" placeholder="Digite o nome do aluno..." />
     <button onclick="pesquisarAluno()">Pesquisar</button>
-  <br><br><br>
+	<br><br>
+	<label id="lblMsgPesquisa"></label>
+  <br><br>
   
   <table width="60%" id="tableCadastros" cellpadding="12px" border="2px" style="border-collapse: collapse;">
     <tr>
@@ -116,9 +144,9 @@
       </th>
     </tr>
     <tr>
-      <td>Nome</td>
-      <td>Curso</td>
-      <td>Idade</td>
+      <th>Nome</th>
+      <th>Curso</th>
+      <th>Idade</th>
     </tr>
 
     <tr id="trConteudo">
