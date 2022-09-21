@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Exercicio Array</title>
+
+  <script>
+    /*
+    * Dados Iniciais
+    */
+    let alunos = new Array();
+    let alunosAutomaticos = [
+      ['João', 'ADM', '16'],
+      ['Maria', 'INFO', '18'],
+      ['Ednaldo Pereira', 'INFO', '15'],
+      ['Galadriel', 'LOG', '16'],
+    ];
+
+
+    /*
+    * Funções
+    */
+    function cadastrarAluno() {
+      let nome  = document.getElementById('txtNomeAluno').value;
+      let curso = document.getElementById('txtCursoDoAluno').value;
+      let idade = parseInt(document.getElementById('txtIdadeAluno').value);
+
+      let aluno = [ nome, curso, idade ];
+
+      alunos.push(aluno);
+    }
+
+    function exibirCadastros() {
+      const tableCadastros = document.getElementById('tableCadastros');
+
+      for (let i = 0; i < alunos.length - 1; i++) {
+        let tr = '';
+        let td = '';
+
+        let nome = alunos[i][0];
+        let curso = alunos[i][1];
+        let idade = alunos[i][2];
+
+        td += `
+        <!-- unico td -->
+        <td>
+          ${nome}
+        </td>
+        <td>
+          ${curso}
+        </td>
+        <td>
+          ${idade}
+        </td>
+        <!-- /unico td -->
+        `;
+
+        tr = `
+        <tr>
+          ${td}
+        </tr>
+        `;
+
+        tableCadastros.innerHTML += tr;
+      }
+    }
+
+    function cadastroAutomatico() {
+      for (let aluno = 0; aluno < alunosAutomaticos.length - 1; aluno++) {
+        alunos.push(alunosAutomaticos[aluno]);
+      }
+    }
+    
+    function pesquisarAluno() {
+      let nomePesquisado = document.getElementById('txtNomePesquisado').value;
+      for (let aluno = 0; aluno < alunos.length - 1; aluno++) {
+        console.log(alunos[aluno][0].indexOf(nomePesquisado));
+      }
+      
+    }
+  </script>
+
+</head>
+
+<body>
+  
+  <center>
+    <h1>Cadastro Aluno - Exercicio Array</h1>
+    <br><br>
+
+    <input type="text" id="txtNomeAluno" placeholder="Digite o nome do aluno..." />
+    <input type="text" id="txtCursoDoAluno" placeholder="Digite o curso..." />
+    <input type="number" id="txtIdadeAluno" placeholder="Digite a idade..." />
+
+    <br><br>
+    <div>
+      <button onclick="cadastrarAluno()">Cadastrar</button>
+
+      <button onclick="exibirCadastros()">Imprimir</button>
+
+      <button onclick="cadastroAutomatico()">Auto</button>
+    </div>
+    <br>
+
+    <input type="text" id="txtNomePesquisado" placeholder="Digite o nome do aluno..." />
+    <button onclick="pesquisarAluno()">Pesquisar</button>
+  <br><br><br>
+  
+  <table width="60%" id="tableCadastros" cellpadding="12px" border="2px" style="border-collapse: collapse;">
+    <tr>
+      <th colspan="3">
+        <u>Alunos Cadastrados</u>
+      </th>
+    </tr>
+    <tr>
+      <td>Nome</td>
+      <td>Curso</td>
+      <td>Idade</td>
+    </tr>
+
+    <tr id="trConteudo">
+
+    </tr>
+  </table>
+</center>
+</body>
+
+</html>
