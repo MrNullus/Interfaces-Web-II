@@ -42,14 +42,14 @@
 		  for (let i = 0; i < alunos.length; i++) {
 			let tr = '';
 			let td = '';
-
+			
 			let nome = alunos[i][0];
 			let curso = alunos[i][1];
 			let idade = alunos[i][2];
 
 			td += `
 			<!-- unico td -->
-			<td>
+			<td id=${nome.toLowerCase()}>
 			  ${nome}
 			</td>
 			<td>
@@ -62,7 +62,7 @@
 			`;
 
 			tr = `
-			<tr>
+			<tr id="trConteudo">
 			  ${td}
 			</tr>
 			`;
@@ -87,25 +87,23 @@
 	  
 	   if (nomePesquisado == '') {
 		lblMsgPesquisa.innerText = "Insira um nome valido...";
-	   } 
-	  
-      for (let aluno = 0; aluno < alunos.length; aluno++) {
-        console.log(alunos[aluno][0].indexOf(nomePesquisado));
-		let nomeAtual = alunos[aluno][0];
+	   } else {
+		for (let aluno = 0; aluno < alunos.length; aluno++) {
+			let nomeAtual = alunos[aluno][0];
 		
-		if (nomeAtual == nomePesquisado) {
+			if (nomeAtual == nomePesquisado) {
 			alunoEncontrado = alunos[aluno];
 		}
       }
 	  
 		if (alunoEncontrado.length <= -1) {
-		  lblMsgPesquisa.innerText = "Aluno (a) não encontrado... :(";
+		  lblMsgPesquisa.innerHTML = "Aluno não encontrado... :(";
 		} else {
-		  lblMsgPesquisa.innerText = "Aluno (a) encontrado!";
-		  console.log(nomePesquisado);
+		  let nomeEncontrado = alunoEncontrado[0].toLowerCase();
+		  lblMsgPesquisa.innerHTML = `Aluno(a) encontrado: <a href="#${nomeEncontrado}">${nomePesquisado}</a>`;
+		  document.getElementById(nomeEncontrado).style = "color:red; font-weight: 600;";
 		}
-		
-      
+	   }
     }
   </script>
 
@@ -147,10 +145,6 @@
       <th>Nome</th>
       <th>Curso</th>
       <th>Idade</th>
-    </tr>
-
-    <tr id="trConteudo">
-
     </tr>
   </table>
 </center>
