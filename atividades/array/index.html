@@ -86,8 +86,6 @@
       let idade = parseInt(document.getElementById('txtIdadeAluno').value);
       let tudoOk = true;
 
-      let aluno = [nome, curso, idade];
-
       if (nome == '') {
         setarLabel('lblMsgNome', "Campo obrigadorio");
         tudoOk = false;
@@ -102,7 +100,9 @@
       }
 
       if (tudoOk) {
+        let aluno = [nome, curso, idade];
         alunos.push(aluno);
+        
         adicionouNovoAluno = true;
         limparLabels();
       }
