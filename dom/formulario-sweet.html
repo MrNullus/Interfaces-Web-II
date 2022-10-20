@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Linkando a biblioteca Sweet -->
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+        <script>
+            function validarForm() {
+                let nome = document.forms["meuForm"]["txtNome"].value;
+                let email = document.forms["meuForm"]["txtEmail"].value;
+            
+               
+                if (nome == "") {
+                    /*  
+                    @> Uso do Swal:
+                        swal( tituloDoModal, mensagem, icone );
+
+                        @> Icones do Swal
+                        'error' | 'success' | 'warning'
+                    */
+                    swal(
+                        "Pera pera, deu ruim!", 
+                        "Nome obrigatório!", 
+                        "error"
+                    );
+                    return false;
+                } else if (email == "") {
+                    swal(
+                        "Pera pera, deu ruim!", 
+                        "E-mail obrigatório!", 
+                        "error"
+                    );
+                    return false;
+                }
+            }
+        </script>
+    </head>
+
+    <body>
+        <h1>DOM (Document Object Model)</h1>
+        <p id="titulo">Validação com JavaScript</p>
+
+        <form name="meuForm" action="/action_page.php" onsubmit="return validarForm()" method="post">
+            Nome: <input type="text" name="txtNome">
+            E-mail: <input type="text" name="txtEmail">
+            <input type="submit" value="Enviar" id="btEnviar">
+        </form>
+
+
+        <script>
+            document.getElementById("titulo").style.color = "blue";
+            document.getElementById("titulo").style.fontFamily = "Arial";
+            document.getElementById("titulo").style.fontSize = "larger";
+
+            /*document.getElementById("btEnviar").style.color = "red";
+            document.getElementById("btEnviar").style.fontFamily = "Verdana";
+            document.getElementById("btEnviar").style.fontSize = "larger";
+            document.getElementById("btEnviar").style.backgroundColor = "lightblue";*/
+
+            let botao = document.querySelector('input[id="btEnviar"]');
+            botao.style.backgroundColor = "lightblue";
+            botao.style.color = "red";
+            botao.style.fontFamily = "Verdana";
+            botao.style.fontSize = "larger";
+            
+            /*EXERCÍCIO
+            Formatar as palavras Nome e Email e as caixas de texto
+            */
+        </script>
+    </body>
+</html>
