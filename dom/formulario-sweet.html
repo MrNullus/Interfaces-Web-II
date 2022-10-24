@@ -41,8 +41,14 @@
         <p id="titulo">Validação com JavaScript</p>
 
         <form name="meuForm" action="/action_page.php" onsubmit="return validarForm()" method="post">
-            Nome: <input type="text" name="txtNome">
-            E-mail: <input type="text" name="txtEmail">
+            <label for="txtNome" id="lblNome">Nome:</label> <input type="text" id="txtNome" name="txtNome" />
+            <br>
+            <br>
+
+            <label for="txtEmail" id="lblEmail">E-mail:</label> <input type="text" id="txtEmail" name="txtEmail" />
+
+            <br>
+            <br>
             <input type="submit" value="Enviar" id="btEnviar">
         </form>
 
@@ -66,6 +72,21 @@
             /*EXERCÍCIO
             Formatar as palavras Nome e Email e as caixas de texto
             */
+            document.querySelector('#lblNome').style.fontSize = '1.3rem';
+            document.querySelector('#lblNome').style.color = 'green';
+            document.querySelector('#lblNome').style.fontWeight = '600';
+
+            document.querySelector('#lblEmail').style.color = 'green';
+            document.querySelector('#lblEmail').style.fontSize = '1.3rem';
+            document.querySelector('#lblEmail').style.fontWeight = '600';
+
+            document.querySelector('#txtNome').style.padding = '0.45rem';
+            document.querySelector('#txtNome').style.fontSize = '1rem';
+            document.querySelector('#txtNome').style.borderRadius = '4px';
+
+            document.querySelector('#txtEmail').style.padding = '0.45rem';
+            document.querySelector('#txtEmail').style.fontSize = '1rem';
+            document.querySelector('#txtEmail').style.borderRadius = '4px';
         </script>
     </body>
 </html>
